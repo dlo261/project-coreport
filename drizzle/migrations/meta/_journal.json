@@ -8,6 +8,13 @@
       "when": 1790031829967,
       "tag": "0000_coreport_phase1_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790032234260,
+      "tag": "0001_harden_function_privileges",
+      "breakpoints": true
     }
   ]
 }
