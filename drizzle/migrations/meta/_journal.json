@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790031829967,
+      "tag": "0000_coreport_phase1_schema",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790032234260,
+      "tag": "0001_harden_function_privileges",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790032252545,
+      "tag": "0002_split_listing_read_policies",
+      "breakpoints": true
+    }
+  ]
+}
