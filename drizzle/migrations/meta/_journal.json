@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790031829967,
+      "tag": "0000_coreport_phase1_schema",
+      "breakpoints": true
+    }
+  ]
 }
