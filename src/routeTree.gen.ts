@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GatedRouteImport } from './routes/_gated'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as GatedDashboardRouteImport } from './routes/_gated.dashboard'
+import { Route as GatedDocsRouteImport } from './routes/_gated.docs'
+import { Route as GatedDownloadRouteImport } from './routes/_gated.download'
+import { Route as GatedMarketplaceRouteImport } from './routes/_gated.marketplace'
+import { Route as GatedPricingRouteImport } from './routes/_gated.pricing'
+import { Route as GatedProvidersRouteImport } from './routes/_gated.providers'
+import { Route as GatedStatusRouteImport } from './routes/_gated.status'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
+import { Route as GatedProductsSlugRouteImport } from './routes/_gated.products.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GatedRoute = GatedRouteImport.update({
+  id: '/_gated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GatedDashboardRoute = GatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => GatedRoute,
+} as any)
+const GatedDocsRoute = GatedDocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => GatedRoute,
+} as any)
+const GatedDownloadRoute = GatedDownloadRouteImport.update({
+  id: '/download',
+  path: '/download',
+  getParentRoute: () => GatedRoute,
+} as any)
+const GatedMarketplaceRoute = GatedMarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => GatedRoute,
+} as any)
+const GatedPricingRoute = GatedPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => GatedRoute,
+} as any)
+const GatedProvidersRoute = GatedProvidersRouteImport.update({
+  id: '/providers',
+  path: '/providers',
+  getParentRoute: () => GatedRoute,
+} as any)
+const GatedStatusRoute = GatedStatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => GatedRoute,
+} as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GatedProductsSlugRoute = GatedProductsSlugRouteImport.update({
+  id: '/products/$slug',
+  path: '/products/$slug',
+  getParentRoute: () => GatedRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof GatedDashboardRoute
+  '/docs': typeof GatedDocsRoute
+  '/download': typeof GatedDownloadRoute
+  '/marketplace': typeof GatedMarketplaceRoute
+  '/pricing': typeof GatedPricingRoute
+  '/providers': typeof GatedProvidersRoute
+  '/status': typeof GatedStatusRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/products/$slug': typeof GatedProductsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard': typeof GatedDashboardRoute
+  '/docs': typeof GatedDocsRoute
+  '/download': typeof GatedDownloadRoute
+  '/marketplace': typeof GatedMarketplaceRoute
+  '/pricing': typeof GatedPricingRoute
+  '/providers': typeof GatedProvidersRoute
+  '/status': typeof GatedStatusRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/products/$slug': typeof GatedProductsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_gated': typeof GatedRouteWithChildren
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/_gated/dashboard': typeof GatedDashboardRoute
+  '/_gated/docs': typeof GatedDocsRoute
+  '/_gated/download': typeof GatedDownloadRoute
+  '/_gated/marketplace': typeof GatedMarketplaceRoute
+  '/_gated/pricing': typeof GatedPricingRoute
+  '/_gated/providers': typeof GatedProvidersRoute
+  '/_gated/status': typeof GatedStatusRoute
+  '/legal/$slug': typeof LegalSlugRoute
+  '/_gated/products/$slug': typeof GatedProductsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/signup'
+    | '/dashboard'
+    | '/docs'
+    | '/download'
+    | '/marketplace'
+    | '/pricing'
+    | '/providers'
+    | '/status'
+    | '/legal/$slug'
+    | '/products/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/signup'
+    | '/dashboard'
+    | '/docs'
+    | '/download'
+    | '/marketplace'
+    | '/pricing'
+    | '/providers'
+    | '/status'
+    | '/legal/$slug'
+    | '/products/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/_gated'
+    | '/login'
+    | '/signup'
+    | '/_gated/dashboard'
+    | '/_gated/docs'
+    | '/_gated/download'
+    | '/_gated/marketplace'
+    | '/_gated/pricing'
+    | '/_gated/providers'
+    | '/_gated/status'
+    | '/legal/$slug'
+    | '/_gated/products/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GatedRoute: typeof GatedRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
+  LegalSlugRoute: typeof LegalSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_gated': {
+      id: '/_gated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof GatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_gated/dashboard': {
+      id: '/_gated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof GatedDashboardRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/_gated/docs': {
+      id: '/_gated/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof GatedDocsRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/_gated/download': {
+      id: '/_gated/download'
+      path: '/download'
+      fullPath: '/download'
+      preLoaderRoute: typeof GatedDownloadRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/_gated/marketplace': {
+      id: '/_gated/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof GatedMarketplaceRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/_gated/pricing': {
+      id: '/_gated/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof GatedPricingRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/_gated/providers': {
+      id: '/_gated/providers'
+      path: '/providers'
+      fullPath: '/providers'
+      preLoaderRoute: typeof GatedProvidersRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/_gated/status': {
+      id: '/_gated/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof GatedStatusRouteImport
+      parentRoute: typeof GatedRoute
+    }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_gated/products/$slug': {
+      id: '/_gated/products/$slug'
+      path: '/products/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof GatedProductsSlugRouteImport
+      parentRoute: typeof GatedRoute
+    }
   }
 }
 
+interface GatedRouteChildren {
+  GatedDashboardRoute: typeof GatedDashboardRoute
+  GatedDocsRoute: typeof GatedDocsRoute
+  GatedDownloadRoute: typeof GatedDownloadRoute
+  GatedMarketplaceRoute: typeof GatedMarketplaceRoute
+  GatedPricingRoute: typeof GatedPricingRoute
+  GatedProvidersRoute: typeof GatedProvidersRoute
+  GatedStatusRoute: typeof GatedStatusRoute
+  GatedProductsSlugRoute: typeof GatedProductsSlugRoute
+}
+
+const GatedRouteChildren: GatedRouteChildren = {
+  GatedDashboardRoute: GatedDashboardRoute,
+  GatedDocsRoute: GatedDocsRoute,
+  GatedDownloadRoute: GatedDownloadRoute,
+  GatedMarketplaceRoute: GatedMarketplaceRoute,
+  GatedPricingRoute: GatedPricingRoute,
+  GatedProvidersRoute: GatedProvidersRoute,
+  GatedStatusRoute: GatedStatusRoute,
+  GatedProductsSlugRoute: GatedProductsSlugRoute,
+}
+
+const GatedRouteWithChildren = GatedRoute._addFileChildren(GatedRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GatedRoute: GatedRouteWithChildren,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
+  LegalSlugRoute: LegalSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
